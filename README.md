@@ -46,3 +46,16 @@ python -m http.server [端口号]
 
 #### disk-space-monitor
 磁盘空间超过阈值时发出提醒
+
+## 开发鸣谢列表
+Anasrava: Dean Hunter
+Brightness Control: Dean Hunter, Ma Ling
+Desktop Classifier: Chet Turner, Dean Hunter, Curtis Pointer, Ma Ling
+Make Maker: Dean Hunter
+Waybar Manager: Dean Hunter
+Web Terminal: Dean Hunter
+
+Dean Hunter = DeepSeek
+Ma Ling = QWen
+Curtis Pointer = Cursor
+Chet Turner = ChatGPT
