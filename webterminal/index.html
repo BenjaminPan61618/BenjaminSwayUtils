@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Terminal</title>
+    <link rel="stylesheet" href="https://unpkg.com/xterm@5.1.0/css/xterm.css">
+    <script src="https://unpkg.com/xterm@5.1.0/lib/xterm.js"></script>
+    <script src="https://unpkg.com/xterm-addon-fit@0.8.0/lib/xterm-addon-fit.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e6e6e6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #4cc9f0;
+            text-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .terminal-container {
+            padding: 5px;
+            height: 512px;
+        }
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #0d0d1b;
+            color: #4cc9f0;
+            font-size: 0.9rem;
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+        }
+        .btn {
+            background: #4cc9f0;
+            color: #0d0d1b;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #2b6cb0;
+            transform: translateY(-2px);
+        }
+        .instructions {
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 900px;
+        }
+        .instructions h2 {
+            color: #4cc9f0;
+            margin-bottom: 10px;
+        }
+        .instructions ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        .instructions li:before {
+            content: "▶";
+            color: #4cc9f0;
+            position: absolute;
+            left: -20px;
+        }
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .connected {
+            background-color: #4ade80;
+        }
+        .disconnected {
+            background-color: #f87171;
+        }
+        .connecting {
+            background-color: #fbbf24;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            .terminal-container {
+                height: 400px;
+                padding: 10px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Web Terminal</h1>
+        <p class="subtitle">A fully functional terminal in your browser</p>
+    </div>
+
+    <div class="container">
+        <div class="status-bar">
+            <div class="connection-status">
+                <span class="status-indicator disconnected" id="status-indicator"></span>
+                <span id="status-text">Disconnected</span>
+            </div>
+            <div class="controls">
+                <button class="btn" id="connect-btn">Connect</button>
+                <button class="btn" id="clear-btn">Clear</button>
+            </div>
+        </div>
+        <div id="terminal" class="terminal-container"></div>
+    </div>
+
+    <div class="instructions">
+        <h2>How to Use</h2>
+        <ul>
+            <li>Click "Connect" to establish a connection to the terminal server</li>
+            <li>Run commands like <code>ls</code>, <code>pwd</code>, <code>echo "Hello"</code></li>
+            <li>Use <code>clear</code> or click the Clear button to clear the terminal</li>
+            <li>For full functionality, you need to run the Python server on the host machine</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>Web Terminal Implementation &copy; 2023 | Secure SSH-like experience in your browser</p>
+    </footer>
+
+    <script>
+        // Terminal initialization
+        const term = new Terminal({
+            cursorBlink: true,
+            theme: {
+                background: '#0d0d1b',
+                foreground: '#4cc9f0',
+                cursor: '#4cc9f0',
+                selection: '#4cc9f050'
+            }
+        });
+        
+        const fitAddon = new FitAddon.FitAddon();
+        term.loadAddon(fitAddon);
+        
+        // Open the terminal in the container
+        term.open(document.getElementById('terminal'));
+        fitAddon.fit();
+        
+        // Add event listeners for buttons
+        document.getElementById('connect-btn').addEventListener('click', connectToServer);
+        document.getElementById('clear-btn').addEventListener('click', () => {
+            term.clear();
+        });
+        
+        // WebSocket connection
+        let socket = null;
+        
+        function connectToServer() {
+            const statusIndicator = document.getElementById('status-indicator');
+            const statusText = document.getElementById('status-text');
+            const connectBtn = document.getElementById('connect-btn');
+            
+            // Update UI to show connecting state
+            statusIndicator.className = 'status-indicator connecting';
+            statusText.textContent = 'Connecting...';
+            connectBtn.disabled = true;
+            connectBtn.textContent = 'Connecting';
+            
+            // Get the current hostname and port (adjust if needed)
+            const host = window.location.hostname;
+            const port = 8765;
+            const wsUrl = `ws://${host}:${port}`;
+            
+            try {
+                // Create WebSocket connection
+                socket = new WebSocket(wsUrl);
+                
+                // Connection opened
+                socket.addEventListener('open', (event) => {
+                    statusIndicator.className = 'status-indicator connected';
+                    statusText.textContent = 'Connected';
+                    connectBtn.textContent = 'Disconnect';
+                    connectBtn.disabled = false;
+                    connectBtn.removeEventListener('click', connectToServer);
+                    connectBtn.addEventListener('click', disconnectFromServer);
+                    
+                    term.write('\r\nConnected to terminal server\r\n');
+                    term.write('$ ');
+                    
+                    // Focus on the terminal
+                    term.focus();
+                });
+                
+                // Listen for messages from server
+                socket.addEventListener('message', (event) => {
+                    term.write(event.data);
+                });
+                
+                // Handle errors
+                socket.addEventListener('error', (error) => {
+                    term.write('\r\n\r\nConnection error. Please make sure the server is running.\r\n');
+                    statusIndicator.className = 'status-indicator disconnected';
+                    statusText.textContent = 'Connection Failed';
+                    connectBtn.textContent = 'Connect';
+                    connectBtn.disabled = false;
+                });
+                
+                // Handle connection close
+                socket.addEventListener('close', (event) => {
+                    if (event.wasClean) {
+                        term.write('\r\n\r\nConnection closed\r\n');
+                    } else {
+                        term.write('\r\n\r\nConnection lost. Attempting to reconnect...\r\n');
+                        // Try to reconnect after 3 seconds
+                        setTimeout(connectToServer, 3000);
+                    }
+                });
+                
+            } catch (error) {
+                term.write(`\r\nError: ${error}\r\n`);
+                statusIndicator.className = 'status-indicator disconnected';
+                statusText.textContent = 'Connection Failed';
+                connectBtn.textContent = 'Connect';
+                connectBtn.disabled = false;
+            }
+        }
+        
+        function disconnectFromServer() {
+            if (socket) {
+                socket.close();
+            }
+            
+            const statusIndicator = document.getElementById('status-indicator');
+            const statusText = document.getElementById('status-text');
+            const connectBtn = document.getElementById('connect-btn');
+            
+            statusIndicator.className = 'status-indicator disconnected';
+            statusText.textContent = 'Disconnected';
+            connectBtn.textContent = 'Connect';
+            connectBtn.disabled = false;
+            connectBtn.removeEventListener('click', disconnectFromServer);
+            connectBtn.addEventListener('click', connectToServer);
+        }
+        
+        // Handle terminal input
+        term.onData((data) => {
+            if (socket && socket.readyState === WebSocket.OPEN) {
+                socket.send(data);
+            }
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            fitAddon.fit();
+        });
+        
+        // Initial message
+        term.write('Web Terminal Initialized\r\n');
+        term.write('Click "Connect" to establish connection to terminal server\r\n');
+    </script>
+</body>
+</html>
