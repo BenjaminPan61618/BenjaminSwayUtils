@@ -23,11 +23,11 @@ Note: This toolkit window might automatically hide.<br>
 可以快速重启、重启、启动Waybar以及检查其上配置的组件（目前仅提供配置可视化功能）<br>
 注意：此程序窗口在特定条件下会隐藏
 
-### Unified-launcher 统一启动器
+### unified-launcher 统一启动器
 Make all the BSU components easier to access.<br>
 一站式管理所有BSU组件
 
-### WebTerminal 网页终端
+### Web Terminal 网页终端
 Instantly communicate on tty with other PCs through the Browsers without SSH.<br><br>
 Server tested: Ubuntu Sway(Python 3.13.3)<br>
 Client tested: Firefox, Chromium, WebPositive on HAIKU, Browser on LineageOS(Waydroid)<br><br>
