@@ -38,7 +38,7 @@ Client tested: Firefox, Chromium, WebPositive (Haiku in QEMU), Browser on Lineag
 #### 启动 WebTerminal
 1. Installing Requirements 安装依赖<br>
 pip install websockets<br>
-** Note: In order to avoid breaking dependencies, some Linux distros might suggest installing Python packages through Package Manager such as apt, rpm rather than pip.<br> e.g. sudo apt install python3-websockets ** <br>
+** Note: In order to avoid breaking dependencies, some Linux distros might suggest installing Python packages through Package Manager such as apt, dnf, zypper, pacman ,etc. rather than pip.<br> e.g. sudo apt install python3-websockets ** <br>
 ** 注意: 在 pip 无法直接下载安装包的情况下，可以优先考虑使用软件包管理器搜索安装缺失的组件，例如： 在 Ubuntu 中，可以通过 apt 安装 python3-websockets  ** <br>
 非必要情况下，不建议无视并破坏依赖关系，强行通过 pip 安装.
 2. Starting Up 启动<br>
