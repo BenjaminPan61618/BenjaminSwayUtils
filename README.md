@@ -42,7 +42,9 @@ Centralized access point for all BSU components, making them easily accessible f
 Browser-based terminal communication between PCs without requiring SSH.
 
 **Tested Environments:**
-- **Server:** Ubuntu Sway (Python 3.13.3)
+- **Server:**
+  -  Ubuntu Sway (Python 3.13.3)
+  -  Fedora 42 (WSL2)
 - **Clients:** 
   - Firefox
   - Chromium
