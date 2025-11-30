@@ -85,19 +85,19 @@
 
 👥 开发鸣谢
 
-组件 贡献者
-Anasrava: Dean Hunter
-Brightness Control: Dean Hunter, Ma Ling
-Desktop Classifier: Chet Turner, Dean Hunter, Curtis Pointer, Ma Ling
-Make Maker: Dean Hunter
-Waybar Manager: Dean Hunter
+贡献者<br>
+Anasrava: Dean Hunter<br>
+Brightness Control: Dean Hunter, Ma Ling<br>
+Desktop Classifier: Chet Turner, Dean Hunter, Curtis Pointer, Ma Ling<br>
+Make Maker: Dean Hunter<br>
+Waybar Manager: Dean Hunter<br>
 Web Terminal: Dean Hunter
 
 🤖 镜之彼端
 
-· Dean Hunter = DeepSeek
-· Ma Ling = QWen
-· Curtis Pointer = Cursor
+· Dean Hunter = DeepSeek<br>
+· Ma Ling = QWen<br>
+· Curtis Pointer = Cursor<br>
 · Chet Turner = ChatGPT
 
 📄 许可证
