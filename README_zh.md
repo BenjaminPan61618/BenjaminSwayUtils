@@ -42,7 +42,9 @@
 无需 SSH，通过浏览器在计算机之间进行终端通信。
 
 **测试环境:**
-- **服务端:** Ubuntu Sway (Python 3.13.3)
+- **服务端:**
+  - Ubuntu Sway (Python 3.13.3)
+  - Fedora 42 (WSL2)
 - **客户端:**
   - Firefox
   - Chromium
