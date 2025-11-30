@@ -1,5 +1,5 @@
 # Benjamin Sway Utils
-
+<a href="README_zh.md">中文</a><br>
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 A comprehensive collection of handy utilities for Sway Desktop on Linux, designed to enhance your desktop experience.
