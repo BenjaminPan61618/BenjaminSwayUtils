@@ -54,11 +54,11 @@ Browser-based terminal communication between PCs without requiring SSH.
 1. **Install Dependencies**
    ```bash
    pip install websockets
-```
+   ```
 
-Important Note: To avoid dependency conflicts, some Linux distributions recommend installing Python packages through their package manager instead of pip:
+   Important Note: To avoid dependency conflicts, some Linux distributions recommend installing Python packages through their package manager instead of pip:
 
-```bash
+   ```bash
    # Ubuntu/Debian
    sudo apt install python3-websockets
    
@@ -67,7 +67,7 @@ Important Note: To avoid dependency conflicts, some Linux distributions recommen
    
    # Arch Linux
    sudo pacman -S python-websockets
-```
+   ```
 
 1. Start the Services
    ```bash
@@ -81,23 +81,23 @@ Important Note: To avoid dependency conflicts, some Linux distributions recommen
 
 💾 Disk Space Monitor
 
-A lightweight script that alerts you when disk space is running low with configurable thresholds.
+A lightweight script that alerts you when disk space is running low.
 
 👥 Development Credits
 
 Component Contributors
-Anasrava: Dean Hunter
-Brightness Control: Dean Hunter, Ma Ling
-Desktop Classifier: Chet Turner, Dean Hunter, Curtis Pointer, Ma Ling
-Make Maker: Dean Hunter
-Waybar Manager: Dean Hunter
+Anasrava: Dean Hunter<br>
+Brightness Control: Dean Hunter, Ma Ling<br>
+Desktop Classifier: Chet Turner, Dean Hunter, Curtis Pointer, Ma Ling<br>
+Make Maker: Dean Hunter<br>
+Waybar Manager: Dean Hunter<br>
 Web Terminal: Dean Hunter
 
 🤖 Contributors
 
-· Dean Hunter = DeepSeek
-· Ma Ling = QWen
-· Curtis Pointer = Cursor
+· Dean Hunter = DeepSeek<br>
+· Ma Ling = QWen<br>
+· Curtis Pointer = Cursor<br>
 · Chet Turner = ChatGPT
 
 📄 License
