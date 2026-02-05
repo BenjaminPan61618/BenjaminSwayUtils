@@ -81,11 +81,11 @@
    ```
    注意: 某些发行版可能需要使用 python3 代替 python。
 
-💾 磁盘空间监控
+### 💾 磁盘空间监控
 
 轻量级脚本，在磁盘空间不足时发出提醒。
 
-👥 开发鸣谢
+## 👥 开发鸣谢
 
 贡献者<br>
 Anasrava: Dean Hunter<br>
@@ -95,13 +95,13 @@ Make Maker: Dean Hunter<br>
 Waybar Manager: Dean Hunter<br>
 Web Terminal: Dean Hunter
 
-🤖 镜之彼端
+## 🤖 镜之彼端
 
 · Dean Hunter = DeepSeek<br>
 · Ma Ling = QWen<br>
 · Curtis Pointer = Cursor<br>
 · Chet Turner = ChatGPT
 
-📄 许可证
+## 📄 许可证
 
 本项目采用 GPL v3 许可证 - 详情请参阅 LICENSE 文件。
