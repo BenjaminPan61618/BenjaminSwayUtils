@@ -81,11 +81,11 @@ Browser-based terminal communication between PCs without requiring SSH.
    ```
    Note: Some distributions may require using python3 instead of python.
 
-💾 Disk Space Monitor
+### 💾 Disk Space Monitor
 
 A lightweight script that alerts you when disk space is running low.
 
-👥 Development Credits
+## 👥 Development Credits
 
 Component Contributors
 Anasrava: Dean Hunter<br>
@@ -95,13 +95,13 @@ Make Maker: Dean Hunter<br>
 Waybar Manager: Dean Hunter<br>
 Web Terminal: Dean Hunter
 
-🤖 Contributors
+## 🤖 Contributors
 
 · Dean Hunter = DeepSeek<br>
 · Ma Ling = QWen<br>
 · Curtis Pointer = Cursor<br>
 · Chet Turner = ChatGPT
 
-📄 License
+## 📄 License
 
 This project is licensed under the GPL v3 License - see the LICENSE file for details.
